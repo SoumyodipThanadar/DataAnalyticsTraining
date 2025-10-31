@@ -1,0 +1,118 @@
+CREATE DATABASE Salesstar;
+USE Salesstar;
+
+CREATE TABLE sales (
+  OrderID INT PRIMARY KEY,
+  OrderDate DATE NOT NULL,
+  OrderMode ENUM('online', 'instore') NOT NULL,
+  Region VARCHAR(100) NOT NULL,
+  Category VARCHAR(100) NOT NULL,
+  Subcategory VARCHAR(100) NOT NULL,
+  CustomerName VARCHAR(100) NOT NULL,
+  Sales INT NOT NULL,
+  profit INT NOT NULL,
+  Discount INT NOT NULL,
+  PaymentMode ENUM('UPI', 'Card', 'Cash') NOT NULL
+  
+);
+
+
+CREATE TABLE sales2 (
+  OrderID INT PRIMARY KEY,
+  OrderDate DATE NOT NULL,
+  OrderMode ENUM('online', 'instore') NOT NULL,
+  Region VARCHAR(100) NOT NULL,
+  Category VARCHAR(100) NOT NULL,
+  Subcategory VARCHAR(100) NOT NULL,
+  CustomerName VARCHAR(100) NOT NULL,
+  Sales DECIMAL NOT NULL,
+  profit DECIMAL NOT NULL,
+  Discount DECIMAL NOT NULL,
+  PaymentMode ENUM('UPI', 'Card', 'Cash') NOT NULL
+  
+);
+
+CREATE TABLE SalesQ (
+    OrderID VARCHAR(20) PRIMARY KEY,
+    OrderDate DATE,
+    OrderMode ENUM('Online', 'In store'),
+    Region VARCHAR(50),
+    Category VARCHAR(50),
+    SubCategory VARCHAR(50),
+    CustomerName VARCHAR(100),
+    Sales DECIMAL(10,2),
+    Profit DECIMAL(10,2),
+    Discount DECIMAL(4,2),
+    PaymentMode ENUM('UPi', 'Card', 'Cash')
+);
+
+
+INSERT INTO SalesQ VALUES 
+('ORD-1001','2025-01-10','Online','South','Furniture','Chairs','Amit Roy',1200.00,150.00,0.1,'Card'),
+('ORD-1002','2025-01-12','In store','West','Technology','Phones','Priya Sen',2500.00,400.00,0,'UPi'),
+('ORD-1003','2025-01-15','Online','East','Office Supplies','Binders','Rahul Mehta',300.00,50.00,0.05,'Cash'),
+('ORD-1004','2025-01-18','In store','Central','Furniture','Tables','Sneha Das',1800.00,-100.00,0.2,'Card'),
+('ORD-1005','2025-01-20','Online','South','Technology','Accessories','Karan Patel',950.00,120.00,0,'UPi'),
+('ORD-1006','2025-01-22','In store','West','Office Supplies','Paper','Neha Sharma',150.00,30.00,0.1,'Cash'),
+('ORD-1007','2025-01-25','Online','East','Furniture','Bookcases','Ravi Kumar',700.00,80.00,0.15,'Card'),
+('ORD-1008','2025-01-28','In store','Central','Technology','Phones','Anjali Verma',3200.00,500.00,0,'UPi'),
+('ORD-1009','2025-01-30','Online','South','Office Supplies','Storage','Deepak Joshi',400.00,60.00,0.05,'Cash'),
+('ORD-1010','2025-02-02','In store','West','Furniture','Chairs','Meena Gupta',1100.00,140.00,0.1,'Card'),
+('ORD-1011','2025-02-05','Online','East','Technology','Accessories','Vikram Singh',870.00,100.00,0,'UPi'),
+('ORD-1012','2025-02-08','In store','Central','Office Supplies','Binders','Pooja Reddy',280.00,45.00,0.05,'Cash'),
+('ORD-1013','2025-02-10','Online','South','Furniture','Tables','Arjun Nair',1950.00,-120.00,0.2,'Card'),
+('ORD-1014','2025-02-12','In store','West','Technology','Phones','Divya Jain',3100.00,480.00,0,'UPi'),
+('ORD-1015','2025-02-15','Online','East','Office Supplies','Paper','Suresh Menon',160.00,35.00,0.1,'Cash'),
+('ORD-1016','2025-02-18','In store','Central','Furniture','Bookcases','Ritika Bose',750.00,90.00,0.15,'Card'),
+('ORD-1017','2025-02-20','Online','South','Technology','Accessories','Manish Agarwal',920.00,110.00,0,'UPi'),
+('ORD-1018','2025-02-22','In store','West','Office Supplies','Storage','Tanya Kapoor',420.00,65.00,0.05,'Cash'),
+('ORD-1019','2025-02-25','Online','East','Furniture','Chairs','Nikhil Sinha',1150.00,145.00,0.1,'Card'),
+('ORD-1020','2025-02-28','In store','Central','Technology','Phones','Shalini Rao',3300.00,520.00,0,'UPi');
+
+SELECT * FROM SalesQ;
+delete FROM SalesQ where OrderID='ORD-1005';
+
+SELECT * FROM SalesQ where CustomerName like 'A%';
+SELECT * FROM SalesQ where CustomerName like '%A%';
+
+SELECT * FROM SalesQ where CustomerName like '%A';
+
+
+SELECT * FROM SalesQ where SubCategory like 'P____';
+
+SELECT * FROM SalesQ where SubCategory like 'P_____';
+
+SELECT CustomerName, Sales, Sales+99 FROM SalesQ;
+
+
+SET SQL_SAFE_UPDATES = 0;
+update SalesQ set Discount=0.09 where PaymentMode='UPI';
+
+
+
+ALTER TABLE SalesQ
+ADD COLUMN Remarks VARCHAR(255);
+
+UPDATE SalesQ
+SET Remarks = 'January Order'
+WHERE MONTH(OrderDate) = 1;
+
+UPDATE SalesQ
+SET CustomerName = UPPER(CustomerName);
+
+
+update SalesQ set Discount=0.09 where PaymentMode='UPI';
+
+UPDATE SalesQ
+SET Sales = Sales + (Sales * 0.1) where CATEGORY not like "F%";
+
+ALTER TABLE SalesQ
+MODIFY COLUMN CustomerName VARCHAR(150);
+
+ALTER TABLE SalesQ
+ALTER COLUMN OrderMode SET DEFAULT 'online';
+
+ALTER TABLE SalesQ
+DROP COLUMN Discount;
+
+
