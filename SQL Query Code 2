@@ -1,0 +1,23 @@
+CREATE DATABASE StudentDB2;
+USE StudentDB2;
+
+CREATE TABLE stu_details (
+  MISNO INT PRIMARY KEY,
+  First_Name VARCHAR(100) NOT NULL,
+  Last_Name VARCHAR(100) NOT NULL,
+  Gender ENUM('Male', 'Female', 'Other') NOT NULL,
+  DOB DATE NOT NULL,
+  DOJ DATE NOT NULL,
+  Dept ENUM('IT', 'FA&A') NOT NULL,
+  Desg ENUM('GM', 'Manager', 'Md', 'SM', 'AGM') NOT NULL,
+  Basic DECIMAL(10,2) NOT NULL
+);
+
+INSERT INTO stu_details (MISNO, First_Name, Last_Name, Gender, DOB, DOJ, Dept, Desg, Basic)
+VALUES (10, 'Daipayan', 'Roy', 'Male', '1989-06-06', '1977-08-05', 'IT', 'GM', 34500);
+INSERT INTO stu_details (MISNO, First_Name, Last_Name, Gender, DOB, DOJ, Dept, Desg, Basic)
+VALUES (8, 'Daipayan', 'Roy', 'Male', '1989-06-03', '2014-07-09', 'IT', 'GM', 34500);
+INSERT INTO stu_details (MISNO, First_Name, Last_Name, Gender, DOB, DOJ, Dept, Desg, Basic)
+VALUES (78, 'Daipayan', 'Roy', 'Male', '1989-06-03', '2014-07-09', 'IT', 'GM', 34500);
+INSERT INTO stu_details (MISNO, First_Name, Last_Name, Gender, DOB, DOJ, Dept, Desg, Basic)
+VALUES (79, 'Daipayan', 'Roy', 'Male', '1900-07-01', '2015-05-05', 'IT', 'GM', 34500);
