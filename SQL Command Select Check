@@ -1,0 +1,33 @@
+SELECT NAME, CITY, FEES FROM stu_details;
+SELECT * FROM stu_details;
+SELECT * FROM stu_details where course = 'BTech';
+
+SELECT * FROM stu_details where course != 'BTech';
+
+SELECT * FROM stu_details where Fees >= '50000';
+
+SELECT * FROM stu_details where course != 'BTech';
+SELECT * FROM stu_details where Fees>50000;
+
+
+SELECT Name FROM stu_details where DOB>='2006-01-01';
+
+SELECT Name FROM stu_details where Course = "BTech" and City ='Chennai';
+
+SELECT Name FROM stu_details where Course = "BTech" or City ='Chennai';
+
+SELECT Name FROM stu_details where Course = "BTech" and City ='Puri';
+
+
+SELECT Name FROM stu_details where Course = "BCA" or Course ='MCA';
+
+SELECT Name FROM stu_details where Fees >  45000 and Fees <= 70000;
+
+SELECT Name FROM stu_details where Fees between 45000 and 70000;
+SELECT * FROM stu_details where Fees > 45000 and Fees < 70000;
+
+SELECT * FROM stu_details where Fees > 45000 or Fees < 70000;
+
+SELECT * FROM stu_details where Fees not between 45000 and 70000;
+SELECT * FROM stu_details where Fees < 45000 or Fees > 70000;
+SELECT * FROM stu_details where Dob >  '2006-04-01' and Dob < '2006-10-01';
