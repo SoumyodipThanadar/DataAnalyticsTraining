@@ -26,6 +26,54 @@ SELECT Name FROM stu_details where Fees >  45000 and Fees <= 70000;
 SELECT Name FROM stu_details where Fees between 45000 and 70000;
 SELECT * FROM stu_details where Fees > 45000 and Fees < 70000;
 
+
+
+SELECT * FROM SalesQ;
+delete FROM SalesQ where OrderID='ORD-1005';
+
+SELECT * FROM SalesQ where CustomerName like 'A%';
+SELECT * FROM SalesQ where CustomerName like '%A%';
+
+SELECT * FROM SalesQ where CustomerName like '%A';
+
+
+SELECT * FROM SalesQ where SubCategory like 'P____';
+
+SELECT * FROM SalesQ where SubCategory like 'P_____';
+
+SELECT CustomerName, Sales, Sales+99 FROM SalesQ;
+
+
+SET SQL_SAFE_UPDATES = 0;
+update SalesQ set Discount=0.09 where PaymentMode='UPI';
+
+
+
+ALTER TABLE SalesQ
+ADD COLUMN Remarks VARCHAR(255);
+
+UPDATE SalesQ
+SET Remarks = 'January Order'
+WHERE MONTH(OrderDate) = 1;
+
+UPDATE SalesQ
+SET CustomerName = UPPER(CustomerName);
+
+
+update SalesQ set Discount=0.09 where PaymentMode='UPI';
+
+UPDATE SalesQ
+SET Sales = Sales + (Sales * 0.1) where CATEGORY not like "F%";
+
+ALTER TABLE SalesQ
+MODIFY COLUMN CustomerName VARCHAR(150);
+
+ALTER TABLE SalesQ
+ALTER COLUMN OrderMode SET DEFAULT 'online';
+
+ALTER TABLE SalesQ
+DROP COLUMN Discount;
+
 SELECT * FROM stu_details where Fees > 45000 or Fees < 70000;
 
 SELECT * FROM stu_details where Fees not between 45000 and 70000;
